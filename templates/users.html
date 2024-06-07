@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Список пользователей{% endblock %}
+{% block content %}
+<table>
+    {% if current_user.is_authenticated %}
+  <tr>
+    <th>#</th>
+    <th>ФИО</th>
+    <th>Роль</th>
+    <th>Действия</th>
+  </tr>
+    {% for user in users %}
+    <tr>
+      <td>{{ loop.index0 + 1 }}</td>
+      <td>{{ user.surname }} {{ user.first_name }} {{ user.middle_name }}</td>
+      <td>{{ role_name(user.role_id) }}</td>
+      <td>
+        <a href="{{ url_for('view_user', user_id=user.id) }}">Просмотр</a>
+        <a href="{{ url_for('edit_user', user_id=user.id) }}">Редактирование</a>
+        <td>
+            <a href="{{ url_for('confirm_delete', user_id=user.id) }}" class="btn btn-danger">Удалить</a>
+        </td>
+      </td>
+    </tr>
+    {% endfor %}
+  {% endif %}
+</table>
+<a href="{{ url_for('create_user') }}">Создание нового пользователя</a>
+{% endblock %}

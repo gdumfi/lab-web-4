@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Подтверждение удаления пользователя{% endblock %}
+{% block content %}
+<h2>Вы уверены, что хотите удалить пользователя "{{ user.surname }} {{ user.first_name }} {{ user.middle_name }}"?</h2>
+<form method="post" action="{{ url_for('delete_user', user_id=user.id) }}">
+  <button type="submit" class="btn btn-danger">Да</button>
+  <a href="{{ url_for('users') }}" class="btn btn-secondary">Нет</a>
+</form>
+{% endblock %}
