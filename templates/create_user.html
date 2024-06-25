@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Создание нового пользователя</h2>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.login.label }} {{ form.login(size=32, class="form-control") }}
+      {% for error in form.login.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.password.label }} {{ form.password(class="form-control") }}
+      {% for error in form.password.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.confirm_password.label }} {{ form.confirm_password(class="form-control") }}
+      {% for error in form.confirm_password.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.surname.label }} {{ form.surname(class="form-control") }}
+      {% for error in form.surname.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.first_name.label }} {{ form.first_name(class="form-control") }}
+      {% for error in form.first_name.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.middle_name.label }} {{ form.middle_name(class="form-control") }}
+      {% for error in form.middle_name.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      <label for="role_id" class="form-label">Роль</label>
+      <select id="role_id" name="role_id" class="form-control">
+        {% for role in roles %}
+          <option value="{{ role.id }}">{{ role.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+  </form>
+{% endblock %}

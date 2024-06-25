@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Главная страница{% endblock %}
+{% block content %}
+<h1>Главная страница</h1>
+{% if current_user.is_authenticated %}
+<p>Привет, {{ current_user.first_name }}!</p>
+{% else %}
+<p>Привет, гость!</p>
+{% endif %}
+{% endblock %}
