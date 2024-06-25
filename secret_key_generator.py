@@ -1,4 +1,0 @@
-import os
-print(os.urandom(16))
-
-#DB'\x9d\xd5IOD6\x1a//\xd7\xd2\xa6\xcc\xee)u\xff\xfd\xe9/D
